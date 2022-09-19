@@ -22,6 +22,9 @@
 \newif\if@tmptwocolumn  \@tmptwocolumnfalse
 \newif\if@times         \@timesfalse
 \newif\if@helvet         \@helvetfalse
+% K-Lab edit:
+\newif\if@robot         \@robotfalse
+
 \newif\if@submit        \@submitfalse
 
 %% Options
@@ -33,8 +36,11 @@
 \DeclareOption{watermark}{\watermarktrue}
 
 \DeclareOption{draft}{\PassOptionsToClass{draft}{article}}
-\DeclareOption{times}{\@timestrue}
-\DeclareOption{helvet}{\@helvettrue}
+% \DeclareOption{times}{\@timestrue}
+% \DeclareOption{helvet}{\@helvettrue}%true}
+\DeclareOption{helvet}{\@helvetfalse}%true}
+%K-Lab edit:
+\DeclareOption{robot}{\@robottrue}
 \DeclareOption{twocolumn}{\@tmptwocolumntrue}
 %\DeclareOption{onecolumn}{\@tmptwocolumnfalse}
 \DeclareOption{submit}{\@submittrue \@tmptwocolumnfalse}
@@ -71,6 +77,8 @@
 \DeclareSIUnit\rpm{\textnormal{rpm}}
 \DeclareSIUnit\pixel{\textnormal{px}}
 \DeclareSIUnit\electron{\textnormal{e\textsuperscript{--}}}
+
+\RequirePackage[sfdefault]{roboto}
 
 \RequirePackage[scaled]{helvet}
 \RequirePackage[T1]{fontenc}
@@ -113,6 +121,8 @@
 
 %% Fonts
 \if@helvet\RequirePackage{helvet}\fi
+
+
 
 %% sizes and margins
 \columnsep          7mm
@@ -477,16 +487,18 @@
   \footerfont |\hspace{7pt}\thepage
   }}
 \else
+    % K-Lab edit: Change logo --> dino instead of biorxiv
   \def\aBioRXiv{{\footnotesize
-      \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo} \hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
+      \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png} %bioRxiv_logo} 
+          \hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
     }}
 
   \def\bBioRXiv{{\footnotesize
-      \footerfont \thepage\hspace{7pt}|\hspace{7pt}\includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo}
+      \footerfont \thepage\hspace{7pt}|\hspace{7pt}\includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png}
     }}
 
   \def\cBioRXiv{{\footnotesize
-      \footerfont \includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo}\hspace{7pt}|\hspace{7pt}\thepage
+      \footerfont \includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png}\hspace{7pt}|\hspace{7pt}\thepage
     }}
 \fi
 
