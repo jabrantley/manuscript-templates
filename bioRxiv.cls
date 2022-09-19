@@ -103,7 +103,9 @@
 \fi
 
 %% Hyperlinking
-\RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
+% \definecolor{KlabBlue}{rgb}{0.184, 0.498, 0.722}
+\definecolor{KlabBlue}{rgb}{0.15, 0.4, 0.75}
+\RequirePackage[colorlinks=true, allcolors= KlabBlue]{hyperref}
 \RequirePackage{orcidlink}
 
 %% Ref to Sup
@@ -474,6 +476,10 @@
 \RequirePackage{lastpage} % Number of pages in the document
 \pagestyle{fancy}		  % Enables the custom headers/footers
 
+\newcommand{\klabpage}{\href{http://www.kordinglab.com}{\textbf{K\"{o}rding Lab}}}
+\newcommand{\klablogo}{\includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png}}
+
+
 \if@submit
   \def\aBioRXiv{{\footnotesize
   \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
@@ -489,16 +495,16 @@
 \else
     % K-Lab edit: Change logo --> dino instead of biorxiv
   \def\aBioRXiv{{\footnotesize
-      \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png} %bioRxiv_logo} 
+      \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|  \hspace{7pt}  \klablogo \hspace{3pt} \klabpage%bioRxiv_logo} 
           \hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
     }}
 
   \def\bBioRXiv{{\footnotesize
-      \footerfont \thepage\hspace{7pt}|\hspace{7pt}\includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png}
+      \footerfont \thepage\hspace{7pt}|\hspace{7pt}  \klablogo \hspace{3pt} \klabpage
     }}
 
   \def\cBioRXiv{{\footnotesize
-      \footerfont \includegraphics[width=.5cm, trim=0 1.5cm 0 0]{img/klab_dino.png}\hspace{7pt}|\hspace{7pt}\thepage
+      \footerfont  \klablogo \hspace{3pt} \klabpage \hspace{7pt} |\hspace{7pt}\thepage
     }}
 \fi
 
@@ -507,7 +513,7 @@
   }}
 
 \def\cSupInf{{\footnotesize
-    \footerfont Supplementary Information\hspace{7pt}|\hspace{7pt}\thepage
+    \footerfont Supplementary Information\hspace{7pt}| \hspace{7pt}  \klablogo \hspace{3pt} \klabpage \hspace{7pt} | \hspace{7pt}\thepage
   }}
 
 \def\dAuthor{{\footnotesize
