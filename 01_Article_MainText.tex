@@ -27,7 +27,35 @@ third.professor\at upenn.edu
 
 \section*{Introduction}\label{s:introduction}
 
-\lipsum{2-6}
+The Kalman filter model assumes the true state at time $k$ is evolved from the state at $(k - 1)$ according to
+\begin{equation}
+    x _{k}=F_{k} x _{k-1}+ B_{k} u _{k}+ w,
+\end{equation}
+(or in bold font)
+\begin{equation}
+    \mathbf{x}_{k}=\mathbf{F}_{k} \mathbf{x}_{k-1} + \mathbf{B}_{k} \mathbf{u}_{k}+ \mathbf{w},
+\end{equation}
+where
+
+\begin{itemize}
+    \item $F_k$ is the state transition model which is applied to the previous state $x_{k-1}$;
+    \item $B_k$ is the control-input model which is applied to the control vector $u_k$;
+    \item $w_k$ is the process noise, which is assumed to be drawn from a zero mean multivariate normal distribution, $\mathbf{\mathcal{N}}$, with covariance, $\mathbf{Q_k}: {\displaystyle \mathbf {w} _{k}\sim {\mathcal {N}}\left(0,\mathbf {Q} _{k}\right)}$.
+\end{itemize}
+
+At time k an observation (or measurement) $z_k$ of the true state $x_k$ is made according to
+\begin{equation}
+    {\displaystyle \mathbf {z} _{k}=\mathbf {H} _{k}\mathbf {x} _{k}+\mathbf {v} _{k}},
+\end{equation}
+
+where
+\begin{itemize}
+    \item $H_k$ is the observation model, which maps the true state space into the observed space and
+    \item $v_k$ is the observation noise, which is assumed to be zero mean Gaussian white noise with covariance ${\displaystyle R_k:  \mathbf {v} _{k}\sim {\mathcal {N}}\left(0,\mathbf {R} _{k}\right)}$.
+\end{itemize}
+% 
+% 
+And that is how rockets work. Boom!
 
 \section*{Results}\label{s:results}
 
